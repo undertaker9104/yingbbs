@@ -1,9 +1,5 @@
 <?php
 
-function route_class(){
-	return str_replace('.', '-', Route::currentRouteName());
-}
-
 function get_db_config()
 {
     if (getenv('IS_IN_HEROKU')) {
@@ -26,4 +22,10 @@ function get_db_config()
         ];
     }
 }
+
+
+function route_class(){
+	return str_replace('.', '-', Route::currentRouteName());
+}
+
 
