@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://yingbbs.test'),
+    'url' => env('APP_URL', 'https://aqueous-mountain-51541.herokuapp.com'),
 
     /*
     |--------------------------------------------------------------------------
