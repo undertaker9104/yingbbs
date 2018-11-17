@@ -38,7 +38,11 @@
         {{-- 用戶發布的内容 --}}
         <div class="panel panel-default">
             <div class="panel-body">
-                暫無數據 ~_~
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#">Ta 的話题</a></li>
+                    <li><a href="#">Ta 的回覆</a></li>
+                </ul>
+            @include('users._topics', ['topics' => $user->topics()->recent()->paginate(5)])
             </div>
         </div>
 
