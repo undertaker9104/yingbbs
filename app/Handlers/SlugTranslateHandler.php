@@ -31,7 +31,7 @@ class SlugTranslateHandler
         // 构建请求参数
         $query = http_build_query([
             "q"     =>  $text,
-            "from"  => "zh",
+            "from"  => "zh-tw",
             "to"    => "en",
             "appid" => $appid,
             "salt"  => $salt,
