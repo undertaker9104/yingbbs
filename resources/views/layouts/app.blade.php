@@ -9,7 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', 'YINGBBS') - Ying 論壇</title>
-    <meta name="description" content="@yield('description', 'YINGBBS 愛好者社區')" />
+    <meta name="description" content="@yield('description', setting('seo_description', 'YINGBBS 愛好者社區。'))" />
+    <meta name="keyword" content="@yield('keyword', setting('seo_keyword', 'YINGBBS,論壇,社區'))" />
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('styles')
