@@ -48,5 +48,12 @@ class UsersTableSeeder extends Seeder
         $user->avatar = 'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/ZqM7iaP4CR.png?imageView2/1/w/200/h/200';
         $user->save();
 
+        //初始化腳色,將1號用戶指定為站長
+        $user->assignRole('Founder');
+
+        //將2號指定為管理員
+        $user = User::find(2);
+        $user->assignRole('Maintainer');
+
     }
 }
