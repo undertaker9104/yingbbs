@@ -54,4 +54,23 @@ class User extends Authenticatable
     public function replies() {
         return $this->hasMany(Reply::class);
     }
+
+    public function setPasswordAttribute($value)
+    {
+        //長度如果不足60 判斷未加密
+        if(strlen($value) != 60) {
+            //長度不足的加密
+            $value = bcrypt($value);
+        }
+
+        $this->attributes['password'] = $value;
+    }
+
+    public function setAvatarAttribute($path)
+    {
+        if (! starts_with($path, 'http')) {
+            $path = config('app.url') . "/uploads/images/avatars/$path";
+        }
+        $this->attributes['avatar'] = $path;
+    }
 }
