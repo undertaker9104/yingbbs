@@ -1,6 +1,7 @@
 <?php
 namespace App;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 class Cron extends Model
 {
     protected $primaryKey = 'command';
