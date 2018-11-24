@@ -20,6 +20,9 @@
                         <hr>
                         <h4><strong>註冊於</strong></h4>
                         <p>{{ $user->created_at->diffForHumans() }}</p>
+                        <hr>
+                        <h4><strong>最後活躍</strong></h4>
+                        <p title="{{  $user->last_actived_at }}">{{ $user->last_actived_at->diffForHumans() }}</p>
                     </div>
                 </div>
             </div>
