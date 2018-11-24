@@ -31,11 +31,8 @@
                 <div class="form-group">
                     <label class="avatar-label">用戶頭像</label>
                     <input type="file" name="avatar">
-
-                    @if($user->avatar)
                     <br>
                     <img src="{{$user->avatar}}" class="thumbnail img-responsive" width="200">
-                    @endif
                 </div>
                 <div class="well well-sm">
                     <button type="submit" class="btn btn-primary">保存</button>
