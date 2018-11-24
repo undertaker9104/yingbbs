@@ -12,6 +12,7 @@ class User extends Authenticatable
         notify as protected laravelNotify;
     }
     use HasRoles;
+    use Traits\ActiveUserHelper;
     public function notify($instance)
     {
         // 如果要通知的人是當前用戶，就不必通知了！
