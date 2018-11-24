@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+
     ];
 
     /**
@@ -26,9 +26,13 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->command('larabbs:calculate-active-user')->hourly();
+        $schedule->command('larabbs:calculate-active-user')->hourly()->when(function () {
+            return Cron::shouldIRun('larabbs:calculate-active-user', 60); //returns true every 60 minutes
+        });
         // 每日零时执行一次
-        $schedule->command('larabbs:sync-user-actived-at')->dailyAt('00:00');
+        $schedule->command('larabbs:sync-user-actived-at')->dailyAt('00:00')->when(function () {
+            return Cron::shouldIRun('larabbs:sync-user-actived-at', 60*24); //returns true every 24 hours
+        });;
     }
 
     /**
