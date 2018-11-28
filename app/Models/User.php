@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Auth;
 use Spatie\Permission\Traits\HasRoles;
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use Notifiable{
         notify as protected laravelNotify;
@@ -37,7 +38,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'introduction', 'avatar', 'phone'
+        'name', 'email', 'password', 'introduction', 'avatar', 'phone',
+        'weixin_openid', 'weixin_unionid'
     ];
 
     /**
@@ -74,5 +76,17 @@ class User extends Authenticatable
             $path = config('app.url') . "/uploads/images/avatars/$path";
         }
         $this->attributes['avatar'] = $path;
+    }
+
+    // Rest omitted for brevity
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }
