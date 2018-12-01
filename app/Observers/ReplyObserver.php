@@ -31,4 +31,6 @@ class ReplyObserver
     {
         $reply->topic->decrement('reply_count',1);
     }
+
+    
 }
