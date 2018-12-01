@@ -2,14 +2,9 @@
 
 namespace App\Http\Requests\Api;
 
-use Dingo\Api\Http\FormRequest;
 
 class ImageRequest extends FormRequest
 {
-    public function authorize()
-    {
-        return true;
-    }
 
     public function rules()
     {
