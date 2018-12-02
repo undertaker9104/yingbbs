@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Auth;
 use Spatie\Permission\Traits\HasRoles;
+use Laravel\Passport\HasApiTokens;
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable{
@@ -15,6 +16,7 @@ class User extends Authenticatable implements JWTSubject
     use HasRoles;
     use Traits\ActiveUserHelper;
     use Traits\LastActivedAtHelper;
+    use HasApiTokens;
     public function notify($instance)
     {
         // 如果要通知的人是當前用戶，就不必通知了！
@@ -94,4 +96,13 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->id == $model->user_id;
     }
+
+    public function findForPassport($username)
+{
+    filter_var($username, FILTER_VALIDATE_EMAIL) ?
+      $credentials['email'] = $username :
+      $credentials['phone'] = $username;
+
+    return self::where($credentials)->first();
+}
 }
